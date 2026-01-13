@@ -1,13 +1,6 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Admin email to receive notifications
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'speedocode.systems@gmail.com';
-// Must use onboarding@resend.dev if you haven't verified your own domain
-const FROM_EMAIL = process.env.FROM_EMAIL || 'Speedocode <onboarding@resend.dev>';
-
 interface AuditRequest {
   name: string;
   email: string;
@@ -35,6 +28,11 @@ function isSpam(data: AuditRequest): boolean {
 
 export async function POST(request: NextRequest) {
   try {
+    // Initialize Resend inside the function to avoid build-time errors
+    const resend = new Resend(process.env.RESEND_API_KEY);
+    const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'speedocode.systems@gmail.com';
+    const FROM_EMAIL = process.env.FROM_EMAIL || 'Speedocode <onboarding@resend.dev>';
+
     const body = await request.json() as AuditRequest;
 
     // Validate required fields
