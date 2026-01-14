@@ -1,0 +1,23 @@
+{
+    "name": "Speedocode Systems",
+    "short_name": "Speedocode",
+    "description": "We build premium software solutions that transform businesses. Websites, Mobile Apps, Automation, and Blockchain development.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a0a",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": [
+        "business",
+        "technology",
+        "software"
+    ],
+    "lang": "en"
+}

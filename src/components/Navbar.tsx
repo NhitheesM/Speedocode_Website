@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import logo from "@/images/logo.svg";
 
 const navLinks = [
@@ -16,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,6 +26,25 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        // Close mobile menu first
+        setIsMobileMenuOpen(false);
+
+        // If it's an anchor link
+        if (href.startsWith("#")) {
+            e.preventDefault();
+
+            // Small delay to allow menu to close
+            setTimeout(() => {
+                const element = document.querySelector(href);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }, 100);
+        }
+        // For regular links like /free-audit, let the default behavior happen
+    };
 
     return (
         <nav
@@ -68,6 +89,7 @@ export default function Navbar() {
                 <button
                     className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    aria-label="Toggle menu"
                 >
                     <motion.span
                         className="w-6 h-0.5 bg-foreground"
@@ -99,7 +121,7 @@ export default function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     className="text-lg font-medium text-foreground-secondary hover:text-foreground transition-colors"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={(e) => handleNavClick(e, link.href)}
                                 >
                                     {link.label}
                                 </a>
@@ -107,7 +129,7 @@ export default function Navbar() {
                             <a
                                 href="#contact"
                                 className="btn btn-primary mt-2"
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onClick={(e) => handleNavClick(e, "#contact")}
                             >
                                 Start a Project
                             </a>
@@ -118,3 +140,4 @@ export default function Navbar() {
         </nav>
     );
 }
+

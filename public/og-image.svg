@@ -1,0 +1,71 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="50%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Grid pattern -->
+  <g opacity="0.03">
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="1"/>
+    </pattern>
+    <rect width="1200" height="630" fill="url(#grid)"/>
+  </g>
+  
+  <!-- Decorative circles -->
+  <circle cx="150" cy="100" r="200" fill="#6366f1" opacity="0.05"/>
+  <circle cx="1050" cy="530" r="250" fill="#8b5cf6" opacity="0.05"/>
+  <circle cx="900" cy="80" r="100" fill="#6366f1" opacity="0.03"/>
+  
+  <!-- Decorative lines -->
+  <line x1="0" y1="200" x2="200" y2="200" stroke="url(#accentGradient)" stroke-width="2" opacity="0.3"/>
+  <line x1="1000" y1="430" x2="1200" y2="430" stroke="url(#accentGradient)" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Code brackets decoration -->
+  <text x="80" y="280" font-family="monospace" font-size="120" fill="#6366f1" opacity="0.15">{</text>
+  <text x="1050" y="420" font-family="monospace" font-size="120" fill="#8b5cf6" opacity="0.15">}</text>
+  
+  <!-- Accent line above title -->
+  <rect x="500" y="220" width="200" height="4" rx="2" fill="url(#accentGradient)" filter="url(#glow)"/>
+  
+  <!-- Main title -->
+  <text x="600" y="315" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="white">
+    Speedocode
+  </text>
+  <text x="600" y="380" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="600" fill="url(#accentGradient)">
+    Systems
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="450" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#a1a1aa">
+    Modern Software Solutions
+  </text>
+  
+  <!-- Service icons area -->
+  <g transform="translate(300, 500)" opacity="0.6">
+    <text x="0" y="0" font-family="system-ui, sans-serif" font-size="14" fill="#6366f1">◆ Websites</text>
+    <text x="150" y="0" font-family="system-ui, sans-serif" font-size="14" fill="#6366f1">◆ Mobile Apps</text>
+    <text x="330" y="0" font-family="system-ui, sans-serif" font-size="14" fill="#6366f1">◆ Automation</text>
+    <text x="490" y="0" font-family="system-ui, sans-serif" font-size="14" fill="#6366f1">◆ Blockchain</text>
+  </g>
+  
+  <!-- Bottom accent line -->
+  <rect x="0" y="620" width="1200" height="10" fill="url(#accentGradient)"/>
+</svg>
